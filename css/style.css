@@ -216,6 +216,23 @@ section:nth-child(even) {
     margin-bottom: 1rem;
 }
 
+.button-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid #007bff;  /* Use your primary color here */
+    color: #007bff;
+}
+
+.btn-secondary:hover {
+    background-color: #007bff;
+    color: white;
+}
+
 input,
 textarea {
     width: 100%;
