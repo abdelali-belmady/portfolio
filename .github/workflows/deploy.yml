@@ -1,18 +1,17 @@
-name: Deploy Portfolio Website
+name: Deploy Static Portfolio
 
 on:
   push:
-    branches: [ "main" ]  # Trigger deployment on push to main branch
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]  # Run checks on PRs to main branch
-  workflow_dispatch:      # Allow manual trigger
+    branches: [ "main" ]
+  workflow_dispatch:
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -29,29 +28,11 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: |
-          if [ -f package.json ]; then
-            npm install
-          fi
-
-      - name: Build project
-        run: |
-          if [ -f package.json ]; then
-            npm run build
-          fi
-
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: '.'  # Upload the entire repository content
+          path: '.'
           
       - name: Deploy to GitHub Pages
         id: deployment
